@@ -35,8 +35,6 @@ app.use('/api/projects', projectRoutes);
 // Catch-all route for React SPA
 const frontendDistPath = path.join(__dirname, 'dist');
 app.use(express.static(frontendDistPath));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(frontendDistPath, 'index.html'));
-// });
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
