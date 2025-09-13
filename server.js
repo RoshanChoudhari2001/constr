@@ -26,8 +26,8 @@ app.use(express.json());
 
 app.use('/uploads', express.static('public/uploads'));
 
-app.use('/users', userRoutes);
-app.use('/projects', projectRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/projects', projectRoutes);
 // Catch-all route for React SPA
 const frontendDistPath = path.join(__dirname, 'dist');
 app.use(express.static(frontendDistPath));
