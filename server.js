@@ -13,17 +13,13 @@ const app = express();
 
 app.use(cors()); // ✅ Enable CORS for all routes
 app.use((req, res, next) => {
-  const csp = [
-  "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
-  "style-src 'self' 'unsafe-inline'"   , "connect-src 'self'",             // API calls only to same origin
-    "img-src 'self' data:",           // allow images from same origin + data URIs
-    "font-src 'self'"                 // fonts only from same origin
-  ].join('; ');
-
-  res.setHeader('Content-Security-Policy', csp);
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;"
+  );
   next();
 });
+
 
 app.use(express.json());
 
