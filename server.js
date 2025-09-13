@@ -14,11 +14,10 @@ const app = express();
 app.use(cors()); // ✅ Enable CORS for all routes
 app.use((req, res, next) => {
   const csp = [
-    "default-src 'self'",             // everything falls back to self
-    "connect-src 'self'",             // API calls only to same origin
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'"   , "connect-src 'self'",             // API calls only to same origin
     "img-src 'self' data:",           // allow images from same origin + data URIs
-    "script-src 'self' 'unsafe-inline'", // allow inline scripts
-    "style-src 'self' 'unsafe-inline'",  // allow inline styles
     "font-src 'self'"                 // fonts only from same origin
   ].join('; ');
 
